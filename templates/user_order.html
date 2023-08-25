@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %}User Order{% endblock %}</h1>
+    <div style="width: 50%; margin: auto">
+        {% for i, j in result %}
+        <p style="font-size: 22px">How much dishes ordered: {{ i.count }}</p>
+            <div style="padding: 10px; background-color: #EEE; margin: 20px">
+                <p style="font-size: 22px">ID: {{ j.ID }}</p>
+                <p style="font-size: 22px">Dish_name: {{ j.Dish_name }}</p>
+                <p style="font-size: 22px">Description: {{ j.Description }}</p>
+                <p style="font-size: 22px">price: {{ j.Price }}</p>
+                <p style="font-size: 22px">Ccal: {{ j.Ccal }}</p>
+                <p style="font-size: 22px">Fat: {{ j.Fat }}</p>
+                <p style="font-size: 22px">Protein: {{ j.Protein }}</p>
+                <p style="font-size: 22px">Carbon: {{ j.Carb }}</p>
+                <p style="font-size: 22px">Available: {{ j.Available }}</p>
+                <img src="{{url_for('static', filename=j.Photo)}}" style="padding-left: 20px;" />
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}

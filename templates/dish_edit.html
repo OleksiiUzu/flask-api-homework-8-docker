@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>{% block title %} Edit dish {% endblock %}</h1>
+  <form method="POST" style="width: 50%; margin: auto">
+      <p style="font-size: 22px">Dish_name {{ result.Dish_name }}</p>
+          <input type="text" name="Dish_name" placeholder="{{ result.Dish_name }}" value="{{ result.Dish_name }}">
+          <br>
+          <input type="text" name="Price" placeholder="{{ result.Price }}" value="{{ result.Price }}">
+          <br>
+          <input type="text" name="Description" placeholder="{{ result.Description }}" value="{{ result.Description }}">
+          <br>
+          <input type="text" name="Available" placeholder="{{ result.Available }}" value="{{ result.Available }}">
+          <br>
+          <br>
+          <p style="width: 50%; margin-top: 10px;">Category</p>
+          <select id="Category:" name="Category" style="width: 29%; margin-bottom: 0px;">
+              {% for i in cat_data %}
+                <option value="{{ i.ID }}" name="{{ i.Name }}">{{ i.Name }}</option>
+              {% endfor %}
+          </select>
+          <br>
+          <br>
+          <input type="text" name="Photo" placeholder="{{ result.Photo }}" value="{{ result.Photo }}">
+          <br>
+          <input type="text" name="Ccal" placeholder="{{ result.Ccal }}" value="{{ result.Ccal }}">
+          <br>
+          <input type="text" name="Protein" placeholder="{{ result.Protein }}" value="{{ result.Protein }}">
+          <br>
+          <input type="text" name="Fat" placeholder="{{ result.Fat }}" value="{{ result.Fat }}">
+          <br>
+          <input type="text" name="Carb" placeholder="{{ result.Carb }}" value="{{ result.Carb }}">
+          <br>
+          <br>
+      <input type="submit">
+  </form>
+  <br>
+{% endblock %}

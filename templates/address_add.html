@@ -1,0 +1,27 @@
+{% extends 'user.html' %}
+
+{% block content %}
+    <h1>{% block title %}Add{% endblock %}</h1>
+    <div style="width: 50%; margin: auto">
+            <div style="padding: 10px; background-color: #EEE; margin: 20px">
+                <form method="POST" style="width: 50%; margin: auto">
+                     <input type="text" name="Town" placeholder="Town">
+                      <br>
+                      <input type="text" name="Street" placeholder="Street">
+                      <br>
+                      <input type="text" name="House" placeholder="House">
+                      <br>
+                      <input type="text" name="Apt" placeholder="Apt">
+                      <br>
+                      <input type="number" name="Block" placeholder="Block">
+                      <br>
+                      <input type="number" name="Floor" placeholder="Floor">
+                      <br>
+                      <br>
+                      <input type="hidden" name="User" value="{{ result }}">
+                      <br>
+                      <input type="submit">
+                  </form>
+            </div>
+    </div>
+{% endblock %}

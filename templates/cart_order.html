@@ -1,0 +1,41 @@
+{% extends 'cart.html' %}
+
+{% block content %}
+    <h1>{% block title %}{% endblock %}</h1>
+<div style="padding: 0px; background-color: #EEE">
+    <p style="font-size: 22px">ID: {{ result.ID }}</p>
+    <p style="font-size: 22px">User: {{ result.User }}</p>
+    <p style="font-size: 22px">Address: {{ result.Address }}</p>
+    <p style="font-size: 22px">price: {{ result.price }}</p>
+    <p style="font-size: 22px">Ccal: {{ result.Ccal }}</p>
+    <p style="font-size: 22px">Fat: {{ result.Fat }}</p>
+    <p style="font-size: 22px">Protein: {{ result.Protein }}</p>
+    <p style="font-size: 22px">Carbon: {{ result.Carbon }}</p>
+    <p style="font-size: 22px">Coment: {{ result.Coment }}</p>
+    <p style="font-size: 22px">Order_date: {{ result.Order_date }}</p>
+    <p style="font-size: 22px">Rate: {{ result.Rate }}</p>
+    <p style="font-size: 22px">Status: {{ result.Status }}</p>
+</div>
+<br>
+<br>
+{% for i in dish_data %}
+{% for data in i %}
+    <p style="font-size: 22px">ID: {{ data.ID }}</p>
+    <p style="font-size: 22px">Dish_name: {{ data.Dish_name }}</p>
+    <p style="font-size: 22px">Description: {{ data.Description }}</p>
+    <p style="font-size: 22px">price: {{ data.price }}</p>
+    <p style="font-size: 22px">Ccal: {{ data.Ccal }}</p>
+    <p style="font-size: 22px">Fat: {{ data.Fat }}</p>
+    <p style="font-size: 22px">Protein: {{ data.Protein }}</p>
+    <p style="font-size: 22px">Carbon: {{ data.Carb }}</p>
+    <p style="font-size: 22px">Available: {{ data.Available }}</p>
+    <p style="font-size: 22px">Order_date: {{ data.Order_date }}</p>
+    <img src="{{url_for('static', filename=data.Photo)}}" style="padding-left: 20px;" />
+{% endfor %}
+{% endfor %}
+<form method="post">
+    <button type="submit">
+        Order
+    </button>
+</form>
+{% endblock %}

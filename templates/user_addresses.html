@@ -1,0 +1,22 @@
+{% extends 'user.html' %}
+
+{% block content %}
+    <h1>{% block title %}{% endblock %}</h1>
+    <div style="width: 50%; margin: auto">
+                        <a class="nav-link" href="{{ url_for('user_address_add') }}">Add</a>
+            {% for key in result %}
+                        <a class="nav-link" href="{{ url_for('user_address', address_id=key.ID) }}">Edit</a>
+
+                    <div style="padding: 10px; background-color: #EEE">
+                        <p style="font-size: 22px">ID: {{ key.ID }}</p>
+                        <p style="font-size: 22px">Town: {{ key.Town }}</p>
+                        <p style="font-size: 22px">Street: {{ key.Street }}</p>
+                        <p style="font-size: 22px">House: {{ key.House }}</p>
+                        <p style="font-size: 22px">Apt: {{ key.Apt }}</p>
+                        <p style="font-size: 22px">Block: {{ key.Block }}</p>
+                        <p style="font-size: 22px">Floor: {{ key.Floor }}</p>
+                        <p style="font-size: 22px">User: {{ key.User }}</p>
+                    </div>
+        {% endfor %}
+    </div>
+{% endblock %}

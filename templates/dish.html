@@ -1,0 +1,33 @@
+{% extends 'category_dishes.html' %}
+
+{% block content %}
+    <h1>{% block title %}{% endblock %}</h1>
+    <div style="width: 50%; margin: auto">
+        {% if session['Type'] == 'Admin' %}
+            <a class="nav-link" href="{{ url_for('admin_dish_edit', dish_id=result.ID) }}">Edit Dish</a>
+            <form action="/admin/dishes/edit/{{ result.ID }}/delete" method="post">
+                <button type="submit" name="ID" value="{{ result.ID }}">Delete</button>
+            </form>
+        {% endif %}
+                        <p style="font-size: 22px">Dish_name {{ result.Dish_name }}</p>
+                        <p style="font-size: 22px">Description {{ result.Description }}</p>
+                        <p style="font-size: 22px">Available {{ result.Available }}</p>
+                        <p style="font-size: 22px">Category {{ result.Category }}</p>
+                        <p style="font-size: 22px">Price {{ result.Price }}</p>
+                        <p style="font-size: 22px">Ccal {{ result.Ccal }}</p>
+                        <p style="font-size: 22px">Protein {{ result.Protein }}</p>
+                        <p style="font-size: 22px">Fat {{ result.Fat }}</p>
+                        <p style="font-size: 22px">Carb {{ result.Carb }}</p>
+                        <img src="{{url_for('static', filename=result.Photo)}}" style="padding-left: 20px;" />
+        {% if session['Type'] == 'User' %}
+        <form method="post" action="/cart/add">
+            <input type="hidden" name="dish" value="{{ result.ID }}">
+            <input type="hidden" name="order_id" value="1">
+            <h5>Enter count of dishes:</h5>
+            <input type="number" name="count" min="1" max="10" value="1">
+            <input type="submit" >
+        </form>
+        {% endif %}
+
+    </div>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %}{% endblock %}</h1>
+    <div style="width: 50%; margin: auto">
+        {% for i in result %}
+            <div style="padding: 10px; background-color: #EEE; margin: 20px">
+                    <a class="nav-link" href="{{ url_for('user_order', order_id=i.ID) }}">Review</a>
+                    <p style="font-size: 22px">ID: {{ i.ID }}</p>
+                    <p style="font-size: 22px">User: {{ i.User }}</p>
+                    <p style="font-size: 22px">Address: {{ i.Address }}</p>
+                    <p style="font-size: 22px">price: {{ i.price }}</p>
+                    <p style="font-size: 22px">Ccal: {{ i.Ccal }}</p>
+                    <p style="font-size: 22px">Fat: {{ i.Fat }}</p>
+                    <p style="font-size: 22px">Protein: {{ i.Protein }}</p>
+                    <p style="font-size: 22px">Carbon: {{ i.Carbon }}</p>
+                    <p style="font-size: 22px">Coment: {{ i.Coment }}</p>
+                    <p style="font-size: 22px">Order_date: {{ i.Order_date }}</p>
+                    <p style="font-size: 22px">Rate: {{ i.Rate }}</p>
+                {% if i.Status == 1 %}
+                    <p style="font-size: 22px">Status: In progress</p>
+                {% endif %}
+                {% if i.Status == 2 %}
+                    <p style="font-size: 22px">Status: Done</p>
+                {% endif %}
+                {% if i.Status == 0 %}
+                    <p style="font-size: 22px">Status: In Cart</p>
+                {% endif %}
+            </div>
+        {% endfor %}
+
+    </div>
+
+{% endblock %}

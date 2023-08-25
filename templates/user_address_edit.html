@@ -1,0 +1,25 @@
+{% extends 'user.html' %}
+
+{% block content %}
+    <h1>{% block title %}Edit{% endblock %}</h1>
+    <div style="width: 50%; margin: auto">
+            <div style="padding: 10px; background-color: #EEE; margin: 20px">
+                  <form method="POST" style="width: 50%; margin: auto">
+                      <input type="text" name="Town" placeholder="{{ result.Town }}" value="{{ result.Town }}">
+                      <br>
+                      <input type="text" name="Street" placeholder="{{ result.Street }}" value="{{ result.Street }}">
+                      <br>
+                      <input type="text" name="House" placeholder="{{ result.House }}" value="{{ result.House }}">
+                      <br>
+                      <input type="text" name="Apt" placeholder="{{ result.Apt }}" value="{{ result.Apt }}">
+                      <br>
+                      <input type="number" name="Block" placeholder="{{ result.Block }}" value="{{ result.Block }}">
+                      <br>
+                      <input type="number" name="Floor" placeholder="{{ result.Floor }}" value="{{ result.Floor }}">
+                      <br>
+                      <br>
+                      <input type="submit">
+                  </form>
+            </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %}{% endblock %}</h1>
+    <div style="width: 50%; margin: auto">
+        {% if result %}
+        {% for ordered_dish, dish in result %}
+            <div style="padding: 10px; background-color: #EEE; margin: 20px">
+                        <p style="font-size: 22px">{{ dish.Dish_name }}</p>
+                        <p style="font-size: 22px">$: {{ dish.Price }}</p>
+                        <p style="font-size: 22px">{{ dish.Description }}</p>
+                        <img src="{{url_for('static', filename=dish.Photo)}}" style="padding-left: 20px;" />
+            </div>
+            <form method="post">
+                        <input type="hidden" name="dish" value="{{ ordered_dish.dish }}">
+                        <button type="submit">Delete from cart</button>
+            </form>
+        {% endfor %}
+        <form action="/cart/order">
+            <button type="submit">
+                Purchase
+                <a class="nav-link" href="{{ url_for('cart_order') }}"></a>
+            </button>
+        </form>
+        {% else %}
+        <h3>Cart is Empty</h3>
+        <a href="/menu">Go to dish menu</a>
+        {% endif %}
+    </div>
+
+{% endblock %}

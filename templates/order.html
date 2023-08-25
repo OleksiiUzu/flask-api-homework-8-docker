@@ -1,0 +1,42 @@
+{% extends 'user.html' %}
+
+{% block content %}
+    <h1>{% block title %}Order History{% endblock %}</h1>
+    <div style="width: 50%; margin: auto">
+
+                {% for i in result %}
+                <p>ID: {{ i.ID }}</p>
+                <p>User: {{ i.User }}</p>
+                <p>Address: {{ i.Address }}</p>
+                <p>price: {{ i.price }}</p>
+                <p>Ccal: {{ i.Ccal }}</p>
+                <p>Fat: {{ i.Fat }}</p>
+                <p>Protein: {{ i.Protein }}</p>
+                <p>Carbon: {{ i.Carbon }}</p>
+                <p>Coment: {{ i.Coment }}</p>
+                <p>Order_date: {{ i.Order_date }}</p>
+                <p>Rate: {{ i.Rate }}</p>
+                <p>Status: {{ i.Status }}</p>
+                {% endfor %}
+                {% for i, j in dish_data %}
+                <img src="{{url_for('static', filename=j.Photo)}}" style="padding-left: 20px;" />
+                <p>Dish_name: {{ j.Dish_name }}</p>
+                <p>Price: {{ j.Price }}</p>
+                <p>Description: {{ j.Description }}</p>
+                <p>Available: {{ j.Available }}</p>
+                <p>Category: {{ j.Category }}</p>
+                <p>Ccal: {{ j.Ccal }}</p>
+                <p>Protein: {{ j.Protein }}</p>
+                <p>Fat: {{ j.Fat }}</p>
+                <p>Carb: {{ j.Carb }}</p>
+                {% endfor %}
+
+    </div>
+{% if session['Type']=='Admin' %}
+<form method="POST">
+    <button type="submit">
+        Done
+    </button>
+</form>
+{% endif %}
+{% endblock %}
