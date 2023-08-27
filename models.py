@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, ForeignKey, select, insert
+from sqlalchemy import Column, Integer, String, ForeignKey, select, insert, Boolean
 from database import Base, engine, db_session
 
 
@@ -22,6 +22,7 @@ class User(Base):
     Password = Column(String(50), nullable=False)
     Tg = Column(String(120), unique=True)
     Type = Column(Integer, ForeignKey('User_type.ID'), nullable=False)
+    verification = Column(Boolean, default=False)
 
     def __init__(self, ID=None, Telephone=None, Email=None, Password=None, Tg=None, Type=None):
         self.ID = ID
@@ -160,10 +161,10 @@ class OrderedDishes(Base):
     __tablename__ = 'Ordered_dishes'
     ID = Column(Integer, primary_key=True, nullable=False, unique=True)
     dish = Column(String, ForeignKey(Dishes.ID), nullable=False)
-    count = Column(Integer, ForeignKey(Address.ID), nullable=False)
+    count = Column(Integer, nullable=False)
     order_id = Column(Integer, ForeignKey(Orders.ID), nullable=False)
 
-    def __int__(self, ID=None, dish=None, count=None, order_id=None):
+    def __init__(self, ID=None, dish=None, count=None, order_id=None):
         self.ID = ID
         self.dish = dish
         self.count = count
@@ -188,48 +189,12 @@ class DishRate(Base):
         return f'<User {self.ID!r}>'
 
 
-# /////////////////////////////////////////////////
-def register(args):
-    try:
-        new_user = User(**args)
+class EmailVarification(Base):
+    __tablename__ = 'Email_Varification'
+    ID = Column(Integer, primary_key=True)
+    user_id = Column(Integer, ForeignKey('User.ID'), nullable=False)
+    code = Column(String, nullable=False)
 
-        # Використання insert() для вставки значень
-        stmt = insert(User).values(
-            Telephone=new_user.telephone,
-            Email=new_user.email,
-            Password=new_user.password,
-            Tg=new_user.tg,
-            Type=new_user.type_
-        )
-
-        # Виконання запиту
-        db_session.execute(stmt)
-
-        # Збереження змін
-        db_session.commit()
-
-        # Закриття сесії
-        db_session.close()
-        # /////////////////////////////////////////////////
-    except Exception as e:
-        print("Помилка:", e)
-
-
-def select_info(mode):
-    # /////////////////////////////////////////////////
-    # selecting method
-    s = select(mode)
-    conn = engine.connect()
-    result = conn.execute(s).fetchall()
-    for i in result:
-        print(i)
-
-    return result
-
-
-us = {'telephone': 11238856,
-      'email': 'babuka@gmail.com',
-      'password': '12344321',
-      'tg': 'http//:blai.ua',
-      'type_': 'User'}
-
+    def __int__(self, ID=None, user_id=None, code=None):
+        self.email = user_id
+        self.code = code

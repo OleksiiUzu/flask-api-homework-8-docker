@@ -1,5 +1,4 @@
 from sqlite3 import DatabaseError
-
 from flask import Flask
 from view import *
 import secrets
