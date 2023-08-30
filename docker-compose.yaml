@@ -1,0 +1,6 @@
+services:
+  web_app:
+    build: .
+    image: "my_app"
+    ports:
+     - "5001:5000"

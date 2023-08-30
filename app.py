@@ -28,7 +28,6 @@ app = Flask(__name__)
 app.secret_key = secrets.token_hex()
 app.config['PERMANENT_SESSION_LIFETIME'] = 3600
 
-
 app.add_url_rule('/', view_func=start_page, methods=['GET'])  # ok
 app.add_url_rule('/about', view_func=about, methods=['GET'])  # ok
 
@@ -82,4 +81,4 @@ def special_exception_handler(error):
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)

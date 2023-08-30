@@ -22,7 +22,7 @@ class User(Base):
     Password = Column(String(50), nullable=False)
     Tg = Column(String(120), unique=True)
     Type = Column(Integer, ForeignKey('User_type.ID'), nullable=False)
-    verification = Column(Boolean, default=False)
+    # verification = Column(Boolean, default=False)
 
     def __init__(self, ID=None, Telephone=None, Email=None, Password=None, Tg=None, Type=None):
         self.ID = ID
