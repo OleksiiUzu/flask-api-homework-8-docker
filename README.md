@@ -19,11 +19,11 @@ Containers package software and its dependencies, ensuring consistent environmen
    cd flask-api-homework-8-docker
    
 2.(Optional) Create and activate a virtual environment:
-  python -m venv venv
-  source venv/bin/activate
+  - python -m venv venv
+  - source venv/bin/activate
   
 3.Build the Docker image: 
- docker build -t flask-app .
+ - docker build -t flask-app .
 
 4.Run the container: 
- docker run -p 5000:5000 flask-app
+ - docker run -p 5000:5000 flask-app
